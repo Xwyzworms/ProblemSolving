@@ -10,7 +10,6 @@ int solve(int nums)
         ans = ans + nums / i;
     }
 
-    
     return ans;
 }
 

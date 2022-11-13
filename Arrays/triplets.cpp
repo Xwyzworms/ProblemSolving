@@ -15,6 +15,7 @@ std::vector<std::vector<int>> solve(std::vector<int> arr, int sum)
   // Nanti Pair Diakhirnya tinggal di sum aja 
   // Katakan lah 5, nanti bakalan di sum sama 6,8 kalau misalnya nggak total sum
   // Kalau misalnya ga sesuai dengan sum, maka ya bukan pair
+  // 
   for(size_t i=0; i <= n - 3; i++) 
   {
       int ptrLeft = i + 1;
