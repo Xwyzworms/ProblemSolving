@@ -1,5 +1,10 @@
 #include<iostream>
 
+void findMe() 
+{
+    std::cout<<"hello world";
+}
+
 int main() 
 {
     int t;

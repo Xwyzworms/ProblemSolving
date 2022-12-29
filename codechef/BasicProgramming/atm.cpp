@@ -14,6 +14,11 @@ float solve(int takeout, float balance )
     }
 }
 
+void masterize() 
+{
+    std::cout<<"Print Hello World ";
+
+}
 
 int main() 
 {
