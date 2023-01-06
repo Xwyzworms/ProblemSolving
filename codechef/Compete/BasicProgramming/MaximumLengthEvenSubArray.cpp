@@ -6,26 +6,17 @@ int main ()
   std::cin>>t;
   while(t--) 
   {
-    int x,cnts=0,cumsum=0;
+    int x;
     std::cin>>x;
-    for(int i = 1; i <=x;i++)
+    int ans = (x/2) + (x%2);
+    if(ans % 2 ==0) 
     {
-      cumsum +=i;
-      if(cumsum % 2 == 0) 
-      {
-        cnts++;
-      }
+      std::cout<<x<<std::endl;
     }
-    if(x % 2 == 1) 
+    else 
     {
-
-      std::cout<<cnts + 1<<std::endl;
-    }
-    else {
-
-      std::cout<<cnts + 2<<std::endl;
+      std::cout<<x-1<<std::endl;
     }
   }
-
-  return 0;
+    return 0;
 }
