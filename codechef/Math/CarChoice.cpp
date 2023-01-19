@@ -6,11 +6,11 @@ int main ()
     std::cin>>t;
     while(t--) 
     {
-        int x1,x2,y1,y2;
+        float x1,x2,y1,y2;
         std::cin>>x1>>x2>>y1>>y2;
         
-        int divisorA = y1 / x1;
-        int divisorB = y2 / x2;
+        float divisorA = x1 / y1;
+        float divisorB = x2 / y2;
         if(divisorA > divisorB ) 
         {
             std::cout<<"-1"<<std::endl;
@@ -20,7 +20,7 @@ int main ()
             std::cout<<"1"<<std::endl;
         }
         else {
-            std::cout<<"0\n";
+            std::cout<<"0"<<std::endl;
         }
     }
     return 0;
