@@ -10,7 +10,6 @@ int solve(std::vector<int>& arr)
         ans ^= arr[i];
     }
     return ans;
-
 }
 
 int main () 
