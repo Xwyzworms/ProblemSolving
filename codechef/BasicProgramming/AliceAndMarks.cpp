@@ -4,7 +4,7 @@ int main()
 {
         int x,y;
         std::cin>>x>>y;
-        if(2*x >= y)
+        if(x >= 2*y)
         {
             std::cout<<"Yes\n";
         }
