@@ -9,7 +9,7 @@ int main()
     while(t--) 
     {
         int n,a,b;
-        std::cin>>n>>a>>b;
+        std::cin>>n>>a>>b; 
         float cnt_a = 0;
         float cnt_b = 0;
         for(int i =0 ; i < n ; i++) 

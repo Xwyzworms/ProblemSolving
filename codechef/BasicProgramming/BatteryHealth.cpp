@@ -1,5 +1,5 @@
 #include<iostream>
-
+// https://www.codechef.com/problems/CANDYSTORE
 int main()
 {
     int t;
