@@ -1,48 +1,37 @@
 #include<iostream>
 #include<vector>
-
-
-int findMin(std::vector<int> arr) 
+#include<algorithm>
+void selectionSort(int a[], int n) 
 {
-    int n = arr.size()-1;
-    int i = n;
-    int min = 0;
-
-    // LoopInvariant
-    // a[min] <= A[0..i-1]
-    while(i > 0) 
+    // Loop Invariant
+    for(int i =0 ; i < n-1 ; i++) 
     {
-        if(arr[i] < arr[min] ) 
+        int smallest = i;
+        // Loop invariant in here
+        for(int j = i+1; j < n; j++) 
         {
-            min = i;
+            if(a[j] < a[smallest]) 
+            {
+                smallest = j;
+            }
         }
-        i = i -1;
-    }
-    return min;
+        if(a[i] > a[smallest]) 
+        {
+            std::swap(a[i], a[smallest]);
+        }
+    }   
 }
-
-std::vector<int> selectionSort(std::vector<int> arr) 
-{   
-    int i =arr.size() -1;
-    while(i > 1) 
-    {
-        int minIndex = findMin(arr);
-        int temp = arr[minIndex];
-        arr[minIndex] = arr[i];
-        arr[i] = temp;
-
-        i -= 1;
-    }
-    return arr;
-}
-
 
 int main() 
 {
-    std::vector<int> sa = {9,6,7,3,4};
-    for(auto a : selectionSort(sa))
+    int n = 10;
+    int a[n] {2,3,41,202,12,
+              122,1,3,2,2};
+    selectionSort(a, n);
+
+    for(int i = 0 ; i < n ; i++ )
     {
-        std::cout<<a<<std::endl;
+        std::cout<<a[i]<<" ";
     }
-       
+
 }
