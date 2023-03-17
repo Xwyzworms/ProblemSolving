@@ -7,10 +7,11 @@ int main()
     while(t--) 
     {
         int k,p1,p2;
-        std::cin>>k>>p1>>p2;
+        std::cin>>p1>>p2>>k;
         int sum = p1 + p2;
-        if(sum % k == 0) 
-        {
+        int turn = sum%(2*k);
+        if(turn < k)  // 2 to represent the person !
+       {
             std::cout<<"CHEF\n";
         }
         else 
