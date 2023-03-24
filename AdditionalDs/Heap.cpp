@@ -1,99 +1,77 @@
 #include<iostream>
-#include<algorithm>
 #include<vector>
-class Heap 
+
+void swap(int *a, int *b) 
 {
-    int data;
-    Heap *left, *right;
-public :
-    Heap *root = NULL;
-//Default Constructor
-    Heap();
-
-// Parameterized constructor/ for inserting later
-    Heap(int);
-
-// Insert Function
-    Heap* Insert(Heap*, int);
-
-
-// Insert for BST
-    Heap* InsertBst(Heap*, int);
-// Create RandomBst
-    Heap CreateBST(std::vector<int>);
-
-// Print the heap 
-    void Print(Heap*);
-};
-
-
-Heap::Heap() : data(0), left(NULL), right(NULL){}
-
-// Default params 
-Heap::Heap(int value) 
-{
-    data = value;
-    left = NULL;
-    right = NULL;
-};
-
-Heap Heap::CreateBST(std::vector<int> data)
-{
-    // FIX THIS BUG 
-    Heap h;
-    this->root = h.InsertBst(this->root, data[0]);   
-    for(int i =1 ; i< data.size(); i++) 
-    {
-        h.InsertBst(root, data[i]);
-    }
-    return h;
+    int temp = *b;
+    *b = *a;
+    *a = temp;
 }
 
-void Heap::Print(Heap* heap) 
+void heapify(std::vector<int> &ht, int i) 
 {
-    if(!heap) 
+
+    int sizeArr = ht.size();
+    int largest = i;
+
+    int left = 2 * i + 1;
+    int right =2 * i + 2;
+
+    // Make sure it is < currentSizeArray
+    if(left < sizeArr && ht[left] > ht[largest] ) 
     {
-        return ;
+        largest = left;
     }
 
-    Print(heap->left);
-    std::cout<<heap->data<<std::endl;
-    Print(heap->right);
+    if(right < sizeArr && ht[right] > ht[largest]) 
+    {
+        largest = right;
+    }
+
+    if(largest != i) 
+    {
+        swap(&ht[i], &ht[largest]);
+        heapify(ht, largest);    // Use the swapped index < this largest contains the address for i var
+    }
 }
 
-Heap* Heap::InsertBst(Heap* heap, int value) 
+
+void insert(std::vector<int> &ht, int newNum) 
 {
-    if(!heap) 
+    int heapSize = ht.size();
+    if(heapSize == 0 )
     {
-        return new Heap(value);
+        ht.push_back(newNum);
     }
-
-    if(value > heap->data) 
+    else 
     {
-        heap->right = InsertBst(heap->right, value);
+        ht.push_back(newNum);
+        for(int i = heapSize / 2 - 1 ; i >= 0 ; i--) 
+        {
+            heapify(ht, i);
+        }
     }
-    else if(value < heap->data) 
-    {
-        heap->left = InsertBst(heap->left, value);
-    }
-
-    return heap;
-
 }
-Heap* Heap::Insert(Heap* heap, int value) 
+
+void printHeap(std::vector<int> &ht) 
 {
-    if(!heap) 
+    for (int i = 0 ; i < ht.size() ; i ++) 
     {
-        return 0;
+        std::cout<<ht[i]<< " ";
     }
-
-    return heap;
+    std::cout<<"\n";
 }
+
 int main () 
 {
-    Heap h;
-    std::vector<int> vect {3,40,23,12,2,20,30};
-    h = h.CreateBST(vect);
-    h.Print(h.root);
-    return 0;
+    std::vector<int> heapTree;
+
+    insert(heapTree, 3);
+    insert(heapTree, 4);
+    insert(heapTree, 9);
+    insert(heapTree, 5);
+    insert(heapTree, 2);
+    insert(heapTree, 8);
+
+    printHeap(heapTree);
 }
