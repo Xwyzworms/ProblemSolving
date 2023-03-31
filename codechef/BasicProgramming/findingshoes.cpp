@@ -1,36 +1,23 @@
-#include <iostream>
-/// @brief TODO Shit
-/// @param p1 
-/// @param p2 
-/// @return 
-int solve(int p1, int p2)
-{
-    if (p1 != 0 && p2 != 0)
-    {
+#include<iostream>
 
-        int modulo = abs(p1 - p2);
-        if (p2 > p1)
-        {
-            return abs(p1 - p2);
-        }
-        else if (p1 > p2)
-        {
-            return modulo + p1;
-        }
-    }
-    return p1 * 2;
-}
-
-int main()
+int main() 
 {
     int t;
-    std::cin >> t;
-    while (t > 0)
+    std::cin>>t;
+    while(t--) 
     {
-        int p1, p2;
-        std::cin >> p1 >> p2;
-        std::cout << solve(p1, p2) << std::endl;
-        t--;
+        int n,m;
+        std::cin>>n>>m;
+        if(n >= m) 
+        {
+            int totalShoes = n * 2;
+            int totalCurrent = m*2;
+            std::cout<<m + (totalShoes  - totalCurrent)<<std::endl;
+        }
+        else 
+        {
+            std::cout<<n<<std::endl;
+        }
     }
     return 0;
 }
