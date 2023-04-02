@@ -1,14 +1,13 @@
 #include<iostream>
-
-int solve(int n) 
+#include<boost/multiprecision/cpp_int.hpp>
+using namespace boost::multiprecision;
+cpp_int solve(cpp_int n) 
 {
-    int ans {1};
-    while(n > 0) 
+    if(n == 0 ) 
     {
-        ans *= n;
-        n--;
+        return 1;
     }
-    return ans;
+    return n * solve(n-1);
 }
 
 int main() 
