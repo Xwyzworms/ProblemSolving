@@ -3,7 +3,7 @@
 int solve(int arr[], int s, int n) 
 {
 
-    //Prim solution
+    // solution
     std::set<int> setme ;
 
     for(int i =0 ; i < n ; i++ ) 
