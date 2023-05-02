@@ -8,31 +8,85 @@ struct TreeNode {
     TreeNode() : data(0), left(nullptr), right(nullptr) {}
     TreeNode(int val) : data(val), left(nullptr), right(nullptr) {}
     TreeNode(int val, TreeNode* left, TreeNode* right ) : data(val), left(left), right(right) {}
+    ~TreeNode() {
+        delete left;
+        delete right;
+    }
 };   
 
 class BST {
-    public:
+    private:
+    TreeNode* root;
+
     TreeNode* InsertBST(TreeNode* root, int val) 
     {
-        if(root == NULL) 
+        if( root == NULL) 
         {
             return new TreeNode(val);
-        }   
+        }
 
-        if(val > root->data ) {
-          root->right =  InsertBST(root->right, val);
-        }else if(val < root->data) {
+        if(val > root->data) 
+        {
+            root->right = InsertBST(root->right, val);
+        }
+        else if(val < root->data) 
+        {
             root->left = InsertBST(root->left, val);
         }
-       
-       // Return the updated node
-        return root;
+    }
+
+    bool hasData(TreeNode* root, int data) 
+    {
+       if(root == NULL) 
+        {
+            return false;
+        }
+
+        if(root->data == data) 
+        {
+            return true;
+        }
+
+        if(data > root->data )
+        {
+            return hasData(root->right, data);           
+        }
+        else return hasData(root->left, data);
+        
+    }
+
+    public:
+    BST() 
+    {
+        root = nullptr;   
+    }
+    ~BST() 
+    {
+        delete root;
+    }
+
+    void InsertBST(int val) 
+    {
+        
+        InsertBST(root, val);
 
     }
-    void printBst(TreeNode* root) 
+    void deleteData(int val) 
     {
-        // Todo later
         
+    }
+
+    bool hasData(int data) 
+    {
+        return hasData(root, data);
+    }
+
+    void printBst() 
+    {
+        // Todo later Nanti di fix
+        std::cout<<root->data<<" ";
+        printBst(root->left);
+        printBst(root->right);
     }
     int getMinimumRecursive(TreeNode* root) {
         
